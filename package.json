@@ -1,0 +1,22 @@
+{
+  "name": "sample-vue-app-with-cicd",
+  "private": true,
+  "version": "0.0.1",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint --ext .js,.vue src",
+    "test:unit": "echo \\ No Test Case added!"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "eslint": "^8.42.0",
+    "eslint-plugin-vue": "^9.14.1",
+    "vite": "^4.3.9",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}
