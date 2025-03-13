@@ -1,3 +1,4 @@
+def dockerImage
 pipeline {
   agent any
 
@@ -52,7 +53,7 @@ pipeline {
     stage('Build Docker Image') {
             steps {
                  script {
-                    docker.build("${IMAGE_TAG}")
+                    dockerImage=docker.build("${IMAGE_TAG}")
         }
       }
     }
@@ -75,8 +76,10 @@ pipeline {
    stage('Push Docker Image') {
     steps {
         script {
-            docker.withRegistry("https://${GAR_REGISTRY}", 'gcp-artifact-registry-key') {
-                dockerImage.push()
+            //docker.withRegistry("https://${GAR_REGISTRY}", 'gcp-artifact-registry-key') {
+                //dockerImage.push()
+              withDockerRegistry(credentialsId: 'gcp-artifact-registry-key', url: 'https://${GAR_REGISTRY}') {
+              dockerImage.push()
             }
         }
     }
