@@ -53,9 +53,21 @@ pipeline {
             steps {
                  script {
                     docker.build("${IMAGE_TAG}")
-                }
-            }
         }
+      }
+    }
+  stage('Authenticate with GCP') {
+            steps {
+                 script {
+                   withCredentials([file(credentialsId: 'gcp-artifact-registry-key', variable: 'gcp-artifact-registry-key')]) {
+    sh '''
+    gcloud auth activate-service-account --key-file=${gcp-artifact-registry-key}
+    gcloud auth configure-docker us-central1-docker.pkg.dev
+    '''
+
+        }
+      }
+    }
   }
 }
 
