@@ -24,6 +24,7 @@ pipeline {
      stage("npm test") {
       steps {
         sh"""
+           npm init @eslint/config
            npm ci
            """
       }  
