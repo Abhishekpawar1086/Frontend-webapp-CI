@@ -73,7 +73,7 @@ pipeline {
     steps {
         script {
            sh '''
-                       docker login -u _json_key -p "$(cat '''+GAR_REGISTRY+''')" https://'''+GAR_REGISTRY+'''
+                       docker login -u _json_key -p "$(cat '''+gcp-artifact-registry-key+''')" https://'''+GAR_REGISTRY+'''
                        docker push '''+IMAGE_TAG+'''
                        docker logout https://'''+GAR_REGISTRY+'''
                         '''
