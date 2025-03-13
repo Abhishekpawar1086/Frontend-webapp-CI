@@ -69,7 +69,7 @@ pipeline {
                        docker push '''+IMAGE_TAG+'''
                        
                         '''
-        }
+        }  //from this sh ''' to the end you need to copy hte code from some were 
       }
     }
  }
