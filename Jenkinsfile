@@ -73,14 +73,14 @@ pipeline {
 
 
    stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry("https://${GAR_REGESTRY}", 'gcp-artifact-registry-key') {
-                        dockerImage.push()
-                    }
-                }
+    steps {
+        script {
+            docker.withRegistry("https://${GAR_REGISTRY}", 'gcp-artifact-registry-key') {
+                dockerImage.push()
             }
         }
+    }
+}
   }
 }
 
