@@ -1,8 +1,13 @@
 pipeline {
   agent any
 
-  //environment {
-  //}
+  environment {
+    GAR-REGESTRY = 'us-central1-docker.pkg.dev'
+    PROJECT-ID = 'final-project-453412'
+    FOLDER-NAME = 'docker-images'
+    IMAGE-NAME = 'frontend-webapp'
+    IMAGE_TAG = "${GAR-REGESTRY}/${PROJECT-ID}/${FOLDER-NAME}/${IMAGE-NAME}/${BUILD_NUMBER}"
+  }
   
   stages {
        stage('Clean Workspace') {
@@ -44,6 +49,13 @@ pipeline {
            """
       }  
     }
+    stage('Build Docker Image') {
+            steps {
+                 script {
+                    docker.build("${IMAGE_TAG}")
+                }
+            }
+        }
   }
 }
 
