@@ -59,9 +59,9 @@ pipeline {
   stage('Authenticate with GCP') {
             steps {
                  script {
-                   withCredentials([file(credentialsId: 'gcp-artifact-registry-key', variable: 'gcp-artifact-registry-key')]) {
+                   withCredentials([file(credentialsId: 'gcp-artifact-registry-key', variable: 'GCP_KEY_FILE')]) {
     sh '''
-    gcloud auth activate-service-account --key-file=${gcp-artifact-registry-key}
+    gcloud auth activate-service-account --key-file=${GCP_KEY_FILE}
     gcloud auth configure-docker ${GAR_REGESTRY}
     '''
 
