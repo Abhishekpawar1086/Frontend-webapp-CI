@@ -2,11 +2,11 @@ pipeline {
   agent any
 
   environment {
-    GAR-REGESTRY = 'us-central1-docker.pkg.dev'
-    PROJECT-ID = 'final-project-453412'
-    FOLDER-NAME = 'docker-images'
-    IMAGE-NAME = 'frontend-webapp'
-    IMAGE_TAG = "${GAR-REGESTRY}/${PROJECT-ID}/${FOLDER-NAME}/${IMAGE-NAME}/${BUILD_NUMBER}"
+    GAR_REGESTRY = 'us-central1-docker.pkg.dev'
+    PROJECT_ID = 'final-project-453412'
+    FOLDER_NAME = 'docker-images'
+    IMAGE_NAME = 'frontend-webapp'
+    IMAGE_TAG = "${GAR_REGESTRY}/${PROJECT_ID}/${FOLDER_NAME}/${IMAGE_NAME}/${BUILD_NUMBER}"
   }
   
   stages {
