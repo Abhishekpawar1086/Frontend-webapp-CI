@@ -2,11 +2,11 @@ pipeline {
   agent any
 
   environment {
-    GAR_REGESTRY = 'us-central1-docker.pkg.dev'
+   GAR_REGISTRY = 'us-central1-docker.pkg.dev'
     PROJECT_ID = 'final-project-453412'
     FOLDER_NAME = 'docker-images'
     IMAGE_NAME = 'frontend-webapp'
-    IMAGE_TAG = "${GAR_REGESTRY}/${PROJECT_ID}/${FOLDER_NAME}/${IMAGE_NAME}/${BUILD_NUMBER}"
+    IMAGE_TAG = "${GAR_REGISTRY}/${PROJECT_ID}/${FOLDER_NAME}/${IMAGE_NAME}/${BUILD_NUMBER}"
   }
   
   stages {
@@ -62,7 +62,7 @@ pipeline {
                    withCredentials([file(credentialsId: 'gcp-artifact-registry-key', variable: 'GCP_KEY_FILE')]) {
     sh '''
     gcloud auth activate-service-account --key-file=${GCP_KEY_FILE}
-    gcloud auth configure-docker ${GAR_REGESTRY}
+    gcloud auth configure-docker ${GAR_REGISTRY}
     '''
 
         }
