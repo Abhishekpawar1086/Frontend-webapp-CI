@@ -75,7 +75,7 @@ pipeline {
    stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry("https://${GAR_REGESTRY}", 'GCP_KEY_FILE') {
+                    docker.withRegistry("https://${GAR_REGESTRY}", 'gcp-artifact-registry-key') {
                         dockerImage.push()
                     }
                 }
