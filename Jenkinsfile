@@ -68,11 +68,8 @@ pipeline {
         }
       }
     }
-
-  }
-
-
-   stage('Push Docker Image') {
+ }
+    stage('Push Docker Image') {
     steps {
         script {
            sh '''
@@ -80,10 +77,10 @@ pipeline {
                        docker push '''+IMAGE_TAG+'''
                        docker logout https://'''+GAR_REGISTRY+'''
                         '''
-            }
         }
+      }
     }
-}
   }
 }
+
 
