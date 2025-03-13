@@ -72,11 +72,12 @@ pipeline {
     stage('Push Docker Image') {
     steps {
         script {
-           sh """
-    docker login -u _json_key -p "\$(cat ${GCP_KEY_FILE})" https://${GAR_REGISTRY}
-    docker push ${IMAGE_TAG}
-    docker logout https://${GAR_REGISTRY}
-"""
+  sh '''
+                       docker login -u _json_key -p "$(cat '''+GCP_KEY_FILE+''')" https://'''+GAR_REGISTRY+'''
+                       docker push '''+IMAGE_TAG+'''
+                       
+                        '''
+          
         }
       }
     }
