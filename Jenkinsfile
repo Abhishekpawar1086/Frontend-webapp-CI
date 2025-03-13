@@ -24,7 +24,7 @@ pipeline {
      stage("npm test") {
       steps {
         sh"""
-           npm init @eslint/config
+           
            npm ci
            """
       }  
@@ -33,6 +33,7 @@ pipeline {
       stage("lint test") {
       steps {
         sh"""
+        npm init @eslint/config
            npm run lint
            """
       }  
