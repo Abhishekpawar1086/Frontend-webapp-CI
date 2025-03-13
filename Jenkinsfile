@@ -27,7 +27,15 @@ pipeline {
            npm ci
            """
       }  
-    }   
+    } 
+
+      stage("lint test") {
+      steps {
+        sh"""
+           npm run lint
+           """
+      }  
+    }
     stage("npm unit test") {
       steps {
         sh"""
@@ -37,5 +45,4 @@ pipeline {
     }
   }
 }
-
 
