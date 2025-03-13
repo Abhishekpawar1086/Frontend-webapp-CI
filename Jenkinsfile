@@ -9,9 +9,15 @@ pipeline {
       steps {
         git branch: 'main', credentialsId: 'Jenkins-token', url: 'https://github.com/Abhishekpawar1086/Frontend-webapp.git'
       }  
+    }
+     stage("npm test") {
+      steps {
+        sh"""
+           npm ci
+           """
+      }  
+    }
   }
-}
-
 }
 
 
