@@ -1,4 +1,3 @@
-def dockerImage
 pipeline {
   agent any
 
@@ -76,10 +75,11 @@ pipeline {
    stage('Push Docker Image') {
     steps {
         script {
-            //docker.withRegistry("https://${GAR_REGISTRY}", 'gcp-artifact-registry-key') {
-                //dockerImage.push()
-              withDockerRegistry(credentialsId: 'gcp-artifact-registry-key', url: 'https://${GAR_REGISTRY}') {
-              dockerImage.push()
+           sh '''
+                       docker login -u _json_key -p "$(cat '''+GAR_REGISTRY+''')" https://'''+GAR_REGISTRY+'''
+                       docker push '''+IMAGE_TAG+'''
+                       docker logout https://'''+GAR_REGISTRY+'''
+                        '''
             }
         }
     }
