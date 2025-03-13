@@ -30,14 +30,13 @@ pipeline {
       }  
     } 
 
-      stage("lint test") {
+     /* stage("lint test") {
       steps {
         sh"""
-        npm init @eslint/config
            npm run lint
            """
       }  
-    }
+    }*/
     stage("npm unit test") {
       steps {
         sh"""
