@@ -27,6 +27,13 @@ pipeline {
            npm ci
            """
       }  
+    }   
+    stage("npm unit test") {
+      steps {
+        sh"""
+           "npm run test:unit"
+           """
+      }  
     }
   }
 }
