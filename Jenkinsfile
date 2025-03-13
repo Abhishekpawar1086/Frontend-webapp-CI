@@ -52,16 +52,16 @@ pipeline {
     stage('Build Docker Image') {
             steps {
                  script {
-                    dockerImage=docker.build("${IMAGE_TAG}")
+                    dockerImage=docker.build("${IMAGE_TAG}")           // building image with image tag will leet jenkins know where to tranSfer this image (GAR) in building stage only for building and pushing only we add ENV variables
         }
       }
     }
   stage('Authenticate with GCP') {
             steps {
                  script {
-                   withCredentials([file(credentialsId: 'gcp-artifact-registry-key', variable: 'GCP_KEY_FILE')]) {
+                   withCredentials([file(credentialsId: 'gcp-artifact-registry-key', variable: 'GCP_KEY_FILE')]) {          //generated to authenticate with gcp using Pipline syntex and Service account JSON file
                     sh '''
-                    gcloud auth activate-service-account --key-file=${GCP_KEY_FILE}
+                    gcloud auth activate-service-account --key-file=${GCP_KEY_FILE}                             
                      gcloud auth configure-docker ${GAR_REGISTRY}
                        '''
                       sh '''
