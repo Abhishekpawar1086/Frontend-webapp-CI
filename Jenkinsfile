@@ -64,12 +64,16 @@ pipeline {
     gcloud auth activate-service-account --key-file=${GCP_KEY_FILE}
     gcloud auth configure-docker ${GAR_REGISTRY}
     '''
-
+                      sh '''
+                       docker login -u _json_key -p "$(cat '''+GCP_KEY_FILE+''')" https://'''+GAR_REGISTRY+'''
+                       docker push '''+IMAGE_TAG+'''
+                       
+                        '''
         }
       }
     }
  }
-    stage('Push Docker Image') {
+   /* stage('Push Docker Image') {
     steps {
         script {
   sh '''
@@ -80,7 +84,7 @@ pipeline {
           
         }
       }
-    }
+    } */
   }
 }
 
