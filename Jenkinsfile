@@ -6,7 +6,7 @@ pipeline {
     PROJECT_ID = 'final-project-453412'
     FOLDER_NAME = 'docker-images'
     IMAGE_NAME = 'frontend-webapp'
-    IMAGE_TAG = "${GAR_REGISTRY}/${PROJECT_ID}/${FOLDER_NAME}/${IMAGE_NAME}/${BUILD_NUMBER}"
+    IMAGE_TAG = "${GAR_REGISTRY}/${PROJECT_ID}/${FOLDER_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}"
   }
   
   stages {
