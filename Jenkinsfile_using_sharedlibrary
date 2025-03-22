@@ -1,5 +1,5 @@
 @Library('Jenkins-shared-library') _  //jenkins shared library which is configured in managed Jenkins under system configuration 
 frontend_ci
 {
-
+IMAGE_NAME = "frontend-webapp"
 }
