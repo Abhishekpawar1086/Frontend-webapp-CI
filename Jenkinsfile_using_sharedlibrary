@@ -1,5 +1,8 @@
+
+
 @Library('Jenkins-shared-library') _  //jenkins shared library which is configured in managed Jenkins under system configuration 
 frontend_ci
 {
-IMAGE_NAME = "frontend-webapp"
+IMAGE_NAME = "frontend-webapp" 
 }
+// IMAGE_NAME = "frontend-webapp"  Is just a value that we are going to pass to our shared library reusable groovy script that is {config.IMAGE_NAME}
