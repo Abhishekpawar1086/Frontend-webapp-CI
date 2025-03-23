@@ -1,8 +1,8 @@
 
 
 @Library('Jenkins-shared-library') _  //jenkins shared library which is configured in managed Jenkins under system configuration 
-frontend_ci
+frontend_ci // is a file name on the another repo frontend_ci.groovy to hit that specific file for reusing that file for pipeline 
 {
-IMAGE_NAME = "frontend-webapp" 
+IMAGE_NAME = "frontend-webapp"  
 }
 // IMAGE_NAME = "frontend-webapp"  Is just a value that we are going to pass to our shared library reusable groovy script that is {config.IMAGE_NAME}
